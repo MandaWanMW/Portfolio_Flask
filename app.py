@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 #Environmental variables
 PORTFOLIO_DBSERVER = os.getenv('PORTFOLIO_DBSERVER')
-PORTFOLIO_PORT = os.getenv('PORTFOLIO_PORT')
+PORTFOLIO_DBPORT = os.getenv('PORTFOLIO_DBPORT')
 PORTFOLIO_DBOA = os.getenv('PORTFOLIO_DBOA')
 PORTFOLIO_DBOB = os.getenv('PORTFOLIO_DBOB')
 
 #Email Settings
 app.config['MAIL_SERVER'] = PORTFOLIO_DBSERVER
-app.config['MAIL_PORT'] = PORTFOLIO_PORT
+app.config['MAIL_PORT'] = PORTFOLIO_DBPORT
 app.config['MAIL_USERNAME'] = PORTFOLIO_DBOA
 app.config['MAIL_PASSWORD'] = PORTFOLIO_DBOB
 app.config['MAIL_USE_TLS'] = False
@@ -45,5 +45,4 @@ def send_email():
   return render_template('success_contact.html', success=success, response=response)
 
 if __name__ == "__main__":
-  app.config['TEMPLATES_AUTO_RELOAD'] = True
   app.run(debug=False)
